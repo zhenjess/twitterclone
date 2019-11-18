@@ -27,7 +27,7 @@ router.get("/user/:user_id", (req, res) => {
         .find({ user: req.params.user_id })
         .then(tweets => res.json(tweets))
         .catch(err => res.status(400).json( { notweetsfound: "No tweets found from that user" }));
-})
+});
 
 router.get("/:id", (req, res) => {
     Tweet
@@ -58,6 +58,6 @@ router.post("/",
         newTweet
             .save()
             .then(tweet => res.json(tweet));
-    })
+    });
 module.exports = router;
 

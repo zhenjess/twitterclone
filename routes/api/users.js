@@ -83,9 +83,10 @@ router.post('/login', (req, res) => {
                     if (isMatch) {
                         const payload = {
                             id: user.id,
-                            handle: user.handle,
-                            email: user.email
-                        }
+                            // handle: user.handle,
+                            // email: user.email
+                            name: user.name
+                        };
                         jwt.sign(
                             payload,
                             keys.secretOrKey,
@@ -96,7 +97,7 @@ router.post('/login', (req, res) => {
                                     token: "Bearer " + token
                                 });
                             }
-                        )
+                        );
                         //res.json({ msg: "Success!"});
                     } else {
                         return res.status(400).json({ password: "Incorrect password" });
