@@ -1,13 +1,17 @@
 {
-  "name": "ls",
+  "name": "chirp",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A Twitter clone built the the MERN stack",
+  "main": "app.js",
   "scripts": {
     "server": "nodemon app.js", 
-    "start": "node app.js"
+    "start": "node app.js",
+    "debug": "node --inspect app.js",
+    "frontend-install": "npm install --prefix frontend",
+    "frontend": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\""
   },
-  "author": "",
+  "author": "Jessica Zhen",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

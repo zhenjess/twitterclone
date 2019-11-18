@@ -4,8 +4,9 @@ const mongoose = require("mongoose");
 const db = require("./config/keys").mongoURI;
 const users = require("./routes/api/users");
 const tweets = require("./routes/api/tweets");
-const User = require("./models/User");
+// const User = require("./models/User");
 const bodyParser = require("body-parser");
+const passport = require("passport");
 
 //mongodb+srv://admin:RYkm1vDcUAv8WLRU@mern-eansw.mongodb.net/test?retryWrites=true&w=majority
 
@@ -13,6 +14,11 @@ mongoose
     .connect(db, { userNewUrlParser: true })
     .then(() => console.log("Connected to mongoDB"))
     .catch(err => console.log(err));
+
+app.get("/", (req, res) => res.send("Hello World!"));
+
+app.use(passport.initialize());
+require('./config/passport')(passport);
 
 app.use(bodyParser.urlencoded({
     extended: false
